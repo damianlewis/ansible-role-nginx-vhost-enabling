@@ -1,0 +1,38 @@
+galaxy_info:
+  role_name: nginx_vhost_enabling
+  author: Damian Lewis
+  description: Nginx vhost enabling for Linux, FreeBSD and OpenBSD.
+  license: MIT
+
+  min_ansible_version: 2.5
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+    - name: Archlinux
+      versions:
+        - all
+    - name: FreeBSD
+      versions:
+        - 10.3
+        - 10.2
+        - 10.1
+        - 10.0
+        - 9.3
+    - name: OpenBSD
+      versions:
+        - 5.9
+        - 6.0
+
+  galaxy_tags:
+  - development
+  - nginx
+  - web
+
+dependencies:
+- geerlingguy.nginx
