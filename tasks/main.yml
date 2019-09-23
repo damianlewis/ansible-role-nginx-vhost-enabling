@@ -7,7 +7,6 @@
     src: "{{ nginx_vhost_path }}/{{ item.filename|default(item.server_name.split(' ')[0] ~ '.conf') }}"
     dest: "{{ nginx_vhost_available_path }}/{{ item.filename|default(item.server_name.split(' ')[0] ~ '.conf') }}"
     remote_src: yes
-    force: yes
     owner: root
     group: "{{ root_group }}"
     mode: 0644
@@ -23,6 +22,7 @@
     group: "{{ root_group }}"
     mode: 0644
     state: link
+    force: yes
   when: item.state|default('present') != 'absent'
   loop: "{{ nginx_vhosts }}"
   notify: reload nginx
