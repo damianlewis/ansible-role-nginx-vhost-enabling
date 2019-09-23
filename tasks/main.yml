@@ -1,0 +1,16 @@
+---
+- name: Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Add vhost config files to sites-available folder
+  copy:
+    src: "{{ nginx_vhost_path }}/{{ item.filename|default(item.server_name.split(' ')[0] ~ '.conf') }}"
+    dest: "{{ nginx_vhost_available_path }}/{{ item.filename|default(item.server_name.split(' ')[0] ~ '.conf') }}"
+    remote_src: yes
+    force: yes
+    owner: root
+    group: "{{ root_group }}"
+    mode: 0644
+  when: item.state|default('present') != 'absent'
+  loop: "{{ nginx_vhosts }}"
+  notify: reload nginx
