@@ -1,2 +1,3 @@
 ---
 nginx_vhost_available_path: /usr/local/etc/nginx/sites-avilable
+nginx_vhost_enabled_path: /usr/local/etc/nginx/sites-enabled
